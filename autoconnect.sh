@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cd ~/.mycmd/myipaddr/
+# test
 
 
 ip addr show > ipaddr.txt
