@@ -4,11 +4,11 @@ getNowIP() {
 	tempString=$(./connect -u 1500012956 -p cppshidi1)
 	tempString=${tempString#*IP}
 	tempString=${tempString%C*}
-	length=`expr ${#tempString} - 2`
-	if [ $length == 48 ]
+	length=`expr ${#tempString} - 3`
+	if [ $length == 47 ]
 	then
 		tempString="FULL"
-	elif [ $length == 109 ]
+	elif [ $length == 108 ]
 	then
 		tempString="ERROR"
 	else
@@ -36,7 +36,7 @@ echo $nowIP
 
 case $nowIP in
 	"FULL")
-		./connect -u 1500012956 -p cppshidi1 -c
+		./connect -u 1500012956 -p cppshidi1 -c >> /dev/null
 		nowIP=$(getNowIP)
 		;;
 	"ERROR")
