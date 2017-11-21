@@ -5,16 +5,16 @@ getNowIP() {
 	tempString=${tempString#*IP}
 	tempString=${tempString%C*}
 	length=`expr ${#tempString} - 2`
-	if [ $length == 50 ]
+	if [ $length == 48 ]
 	then
 		tempString="FULL"
-	elif [ $length == 111 ]
+	elif [ $length == 109 ]
 	then
 		tempString="ERROR"
 	else
 		tempString=${tempString:2:$length}
 	fi
-	return $tempString
+	echo $tempString
 }
 
 syncGit() {
@@ -31,19 +31,19 @@ while true
 do
 read oldIP < ipaddr.txt
 
-getNowIP
-nowIP=$?
+nowIP=$(getNowIP) 
+echo $nowIP
 
 case $nowIP in
 	"FULL")
 		./connect -u 1500012956 -p cppshidi1 -c
-		getNowIP
-		nowIP=$?
+		nowIP=$(getNowIP)
 		;;
 	"ERROR")
 		continue
 		;;
 esac
+echo $nowIP
 		
 if [ $oldIP != $nowIP ]
 then
