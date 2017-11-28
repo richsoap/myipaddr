@@ -3,7 +3,7 @@
 getNowIP() {
 	tempString=$(./connect -u 1500012956 -p cppshidi1)
 	tempString=${tempString#*IP}
-	tempString=${tempString%C*}
+	tempString=${tempString%%\;*}
 	length=${#tempString}
 	if [ $length == 50 ]
 	then
@@ -30,6 +30,11 @@ cd ~/.mycmd/myipaddr/
 while true
 do
 read oldIP < ipaddr.txt
+if [ ${#oldIP} == 0 ]
+then
+	oldIP="NULL"
+fi
+
 
 nowIP=$(getNowIP) 
 
