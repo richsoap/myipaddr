@@ -24,11 +24,7 @@ syncGit() {
 	git push origin master
 }
 
-
-cd ~/.mycmd/myipaddr/
-
-while true
-do
+cd /home/richsoap/.mycmd/myipaddr
 read oldIP < ipaddr.txt
 if [ ${#oldIP} == 0 ]
 then
@@ -53,8 +49,6 @@ then
 	echo $nowIP > ipaddr.txt
 	syncGit
 fi
-sleep 3m
-done
 
 
 
