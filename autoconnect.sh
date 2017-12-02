@@ -33,6 +33,7 @@ fi
 
 
 nowIP=$(getNowIP) 
+echo $nowIP
 
 case $nowIP in
 	"FULL")
